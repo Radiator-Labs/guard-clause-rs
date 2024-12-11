@@ -1,4 +1,4 @@
-# Guard-Clause [![Cloud-CI](https://github.com/Radiator-Labs/guard-clause/actions/workflows/cloud-ci.yml/badge.svg)](https://github.com/Radiator-Labs/guard-clause/actions/workflows/cloud-ci.yml)
+# Guard-Clause [![Cloud-CI](https://github.com/Radiator-Labs/guard-clause-rs/actions/workflows/cloud-ci.yml/badge.svg)](https://github.com/Radiator-Labs/guard-clause-rs/actions/workflows/cloud-ci.yml)
 
 Guard-clause library, providing syntactic sugar to improve readability of
 [guard-clauses](https://en.wikipedia.org/wiki/Guard_(computer_science))
