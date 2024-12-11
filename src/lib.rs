@@ -1,3 +1,6 @@
+#![cfg_attr(not(test), no_std)]
+#![cfg_attr(not(test), no_main)]
+
 /// Checks that a boolean expression is `true` at runtime, otherwise performs
 /// a return with the second parameter, short-circuiting the operation of the
 /// enclosing function.
