@@ -1,0 +1,27 @@
+[package]
+name = "guard-clause"
+version = "0.1.0"
+edition = "2021"
+license = "MIT OR Apache-2.0"
+authors = [
+    "Phil Markgraf <philip.markgraf@kel.vin>",
+    "Phil “Shaken” Markgraf <ShakenCodes@gmail.com>",
+]
+readme = "README.md"
+description = "Syntactic sugar for writing simple guard clauses."
+repository = "https://github.com/Radiator-Labs/guard-clause-rs"
+categories = ["Rust patterns", "No standard library"]
+keywords = [
+    "guard",
+    "guard-clause",
+    "syntactic-sugar",
+    "no-std",
+    "kelvin",
+    "kel.vin",
+    "radiator-labs",
+]
+
+[badges]
+maintenance = { status = "actively-developed" }
+
+[dependencies]
