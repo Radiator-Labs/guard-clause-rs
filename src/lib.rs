@@ -46,12 +46,30 @@
 /// }
 /// assert_eq!(Ok(3), safe_divide_using_result_enum(6, 2));
 /// assert_eq!(Err(DivError::DivideByZero), safe_divide_using_result_enum(6, 0));
+///
+/// fn increments_if_zero(i: &mut i32) {
+///     guard!(*i == 0);
+///     *i += 1;
+/// }
+///
+/// let mut i = 0;
+/// increments_if_zero(&mut i);
+/// assert_eq!(1, i);
+///
+/// let mut j = 2;
+/// increments_if_zero(&mut j);
+/// assert_eq!(2, j);
 /// ```
 #[macro_export]
 macro_rules! guard {
     ($check:expr, $fail_return:expr) => {
         if !$check {
             return $fail_return;
+        }
+    };
+    ($check:expr) => {
+        if !$check {
+            return;
         }
     };
 }
@@ -67,7 +85,7 @@ mod tests {
         assert_eq!(use_guard_with_result(true, TestError::Reason2), Ok(()));
     }
     #[test]
-    fn given_a_false_condition_guard_guard_with_result_return_type_then_err_with_enum() {
+    fn given_a_false_condition_guard_with_result_return_type_then_err_with_enum() {
         let expected_err = TestError::Reason2;
         assert_eq!(
             use_guard_with_result(false, expected_err),
@@ -84,7 +102,7 @@ mod tests {
         assert_eq!(use_guard_with_option(true), Some(()));
     }
     #[test]
-    fn given_a_false_condition_guard_guard_with_option_return_type_then_err_with_enum() {
+    fn given_a_false_condition_guard_with_option_return_type_then_err_with_enum() {
         assert_eq!(use_guard_with_option(false), None);
     }
 
@@ -100,11 +118,29 @@ mod tests {
         );
     }
     #[test]
-    fn given_a_false_condition_guard_guard_with_string_slice_return_type_then_err_with_enum() {
+    fn given_a_false_condition_guard_with_string_slice_return_type_then_err_with_enum() {
         assert_eq!(
             use_guard_with_string_slice(false, BAD_STRING_SLICE),
             BAD_STRING_SLICE
         );
+    }
+
+    fn use_guard_with_no_return(test: bool, run_counter: &mut usize) {
+        guard!(test);
+        *run_counter += 1;
+    }
+    #[test]
+    fn given_a_true_condition_guard_with_no_return_type_then_no_return_and_code_after_guard_ran() {
+        let mut run_counter = 0;
+        use_guard_with_no_return(true, &mut run_counter);
+        assert_eq!(1, run_counter);
+    }
+    #[test]
+    fn given_a_false_condition_guard_with_no_return_type_then_no_return_but_code_after_guard_not_run(
+    ) {
+        let mut run_counter = 0;
+        use_guard_with_no_return(false, &mut run_counter);
+        assert_eq!(0, run_counter);
     }
 
     #[derive(Debug, PartialEq, Clone, Copy)]
