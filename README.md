@@ -7,7 +7,7 @@ in Rust code.
 ## Intention
 
 The Rust programming language provides the [`assert`](https://doc.rust-lang.org/core/macro.assert.html)
-macro in the core library (starting in 1.6.0, assert was originally in the standard library.)
+macro in the core library (starting in 1.6.0; assert was originally in the standard library.)
 The `assert` allows values to be checked and, if not as desired, panics the application.
 Guard-clauses attempts to deliver a similar functionality, but returns a value instead of panicking.
 
