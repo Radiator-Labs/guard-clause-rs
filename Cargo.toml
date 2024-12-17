@@ -11,7 +11,7 @@ readme = "README.md"
 description = "Syntactic sugar for writing simple guard clauses."
 repository = "https://github.com/Radiator-Labs/guard-clause-rs"
 categories = ["Rust patterns", "No standard library"]
-keywords = ["guard", "guard-clause", "syntactic-sugar", "no-std", "kel.vin"]
+keywords = ["guard", "guard-clause", "syntactic-sugar", "no-std"]
 
 [badges]
 maintenance = { status = "actively-developed" }
