@@ -10,7 +10,7 @@ authors = [
 readme = "README.md"
 description = "Syntactic sugar for writing simple guard clauses."
 repository = "https://github.com/Radiator-Labs/guard-clause-rs"
-categories = ["Rust patterns", "No standard library"]
+categories = ["rust-patterns", "no-std", "no-std::no-alloc"]
 keywords = ["guard", "guard-clause", "syntactic-sugar", "no-std"]
 
 [badges]
