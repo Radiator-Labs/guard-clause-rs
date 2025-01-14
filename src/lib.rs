@@ -4,14 +4,17 @@
 // Probably by Clippy defaults: Complexity, Correctness, Performance, Suspicious
 // Added manually: Restriction, Style
 // Not included: Nursery
-// Lints up to 1.83.0 (in process)
+// Lints up to 1.84.0
 #![deny(clippy::pedantic)]
 #![deny(clippy::cargo)]
 #![deny(clippy::absolute_paths)]
 #![deny(clippy::alloc_instead_of_core)]
 #![deny(clippy::allow_attributes)]
 #![deny(clippy::allow_attributes_without_reason)]
-// #![deny(clippy::arbitrary_source_item_ordering)] // Unlock when 1.84.0 released. Originally reported as 1.82.0
+#![allow(
+    clippy::arbitrary_source_item_ordering,
+    reason = "Kelvin Embedded style guide: prefer ordering for logical reasons over alphabetical."
+)]
 #![allow(
     clippy::arithmetic_side_effects,
     reason = "Kelvin Embedded style guide: Arithmetic side effects commonly used in embedded systems programming."
@@ -20,7 +23,7 @@
     clippy::as_conversions,
     reason = "clippy::as_conversions explanation lost in history. TODO remove allow and find reason."
 )]
-// #![deny(clippy::as_pointer_underscore)] // Unlock when 1.84.0 released. Originally reported as 1.81.0
+// #![deny(clippy::as_pointer_underscore)] // Unlock when lint released. Originally reported as 1.81.0
 #![deny(clippy::as_underscore)]
 #![deny(clippy::assertions_on_constants)]
 #![deny(clippy::big_endian_bytes)]
@@ -97,17 +100,19 @@
 #![deny(clippy::lossy_float_literal)]
 #![deny(clippy::manual_is_finite)]
 #![deny(clippy::manual_is_infinite)]
+#![deny(clippy::manual_is_power_of_two)]
 #![deny(clippy::manual_next_back)]
 #![deny(clippy::manual_pattern_char_comparison)]
 #![deny(clippy::manual_rotate)]
 #![deny(clippy::manual_while_let_some)]
-// #![deny(clippy::map_with_unused_argument_over_ranges)]  // Unlock when 1.84.0 released.
+#![deny(clippy::map_all_any_identity)]
+#![deny(clippy::map_err_ignore)]
+#![deny(clippy::map_with_unused_argument_over_ranges)]
+#![deny(clippy::mem_forget)]
 #![allow(
     clippy::min_ident_chars,
     reason = "Single characters are useful in small namespaces and should not be mechanically prohibited."
 )]
-#![deny(clippy::map_err_ignore)]
-#![deny(clippy::mem_forget)]
 #![deny(clippy::missing_assert_message)]
 #![allow(
     clippy::missing_asserts_for_indexing,
@@ -126,6 +131,7 @@
 #![deny(clippy::mixed_attributes_style)]
 #![deny(clippy::mixed_read_write_in_expression)]
 #![deny(clippy::mod_module_files)]
+#![deny(clippy::module_name_repetitions)]
 #![allow(
     clippy::modulo_arithmetic,
     reason = "clippy::modulo_arithmetic explanation lost in history. TODO remove allow and find reason."
@@ -137,6 +143,7 @@
 #![deny(clippy::multiple_inherent_impl)]
 #![deny(clippy::multiple_unsafe_ops_per_block)]
 #![deny(clippy::mutex_atomic)]
+#![deny(clippy::needless_as_bytes)]
 #![deny(clippy::needless_borrows_for_generic_args)]
 #![deny(clippy::needless_else)]
 #![deny(clippy::needless_pub_self)]
@@ -206,7 +213,7 @@
 #![deny(clippy::undocumented_unsafe_blocks)]
 #![deny(clippy::unimplemented)]
 #![deny(clippy::unnecessary_fallible_conversions)]
-// #![deny(clippy::unnecessary_map_or)] // Unlock when 1.84.0 released.
+#![deny(clippy::unnecessary_map_or)]
 #![deny(clippy::unnecessary_safety_comment)]
 #![deny(clippy::unnecessary_safety_doc)]
 #![deny(clippy::unnecessary_self_imports)]
