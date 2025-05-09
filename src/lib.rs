@@ -247,6 +247,8 @@
 ///
 /// # Examples
 ///
+/// ## Guard returning on Option
+///
 /// ```rust
 /// use guard_clause::guard;
 ///
@@ -256,6 +258,12 @@
 /// }
 /// assert_eq!(Some(3), safe_divide_using_option(6, 2));
 /// assert_eq!(None, safe_divide_using_option(6, 0));
+/// ```
+///
+/// ## Guard returning a string
+///
+/// ``` rust
+/// use guard_clause::guard;
 ///
 /// fn safe_divide_using_result_str(lval: i32, rval: i32) -> Result<i32, &'static str> {
 ///     guard!(rval != 0, Err("Divide by zero!"));
@@ -263,6 +271,12 @@
 /// }
 /// assert_eq!(Ok(3), safe_divide_using_result_str(6, 2));
 /// assert_eq!(Err("Divide by zero!"), safe_divide_using_result_str(6, 0));
+/// ```
+///
+/// ## Guard returning a enum
+///
+/// ``` rust
+/// use guard_clause::guard;
 ///
 /// #[derive(Debug, PartialEq)]
 /// enum DivError {
@@ -274,7 +288,12 @@
 /// }
 /// assert_eq!(Ok(3), safe_divide_using_result_enum(6, 2));
 /// assert_eq!(Err(DivError::DivideByZero), safe_divide_using_result_enum(6, 0));
+/// ```
 ///
+/// ## Guard returning the unit type: '()'
+///
+/// ``` rust
+/// use guard_clause::guard;
 /// fn increments_if_zero(i: &mut i32) {
 ///     guard!(*i == 0);
 ///     *i += 1;
