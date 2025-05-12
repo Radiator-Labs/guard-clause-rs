@@ -1,4 +1,4 @@
-# Guard-Clause [![Cloud-CI](https://github.com/Radiator-Labs/guard-clause-rs/actions/workflows/cloud-ci.yml/badge.svg)](https://github.com/Radiator-Labs/guard-clause-rs/actions/workflows/cloud-ci.yml)
+# Guard-Clause [![Cloud-CI](https://github.com/Radiator-Labs/guard-clause-rs/actions/workflows/cloud-ci.yml/badge.svg)](https://github.com/Radiator-Labs/guard-clause-rs/actions/workflows/cloud-ci.yml)[![crates.io](https://img.shields.io/crates/v/guard-clause.svg)](https://crates.io/crates/guard-clause) [![crates.io](https://img.shields.io/crates/d/guard-clause.svg)](https://crates.io/crates/guard-clause)
 
 Guard-clause library, providing syntactic sugar to improve readability of
 [guard-clauses](https://en.wikipedia.org/wiki/Guard_(computer_science))
@@ -9,7 +9,7 @@ in Rust code.
 The Rust programming language provides the [`assert`](https://doc.rust-lang.org/core/macro.assert.html)
 macro in the core library (starting in 1.6.0; assert was originally in the standard library.)
 The `assert` allows values to be checked and, if not as desired, panics the application.
-Guard-clauses attempts to deliver a similar functionality, but returns a value instead of panicking.
+Guard-clauses attempts to deliver a similar functionality, but causes the enclosing function to immediately return a value, instead of panicking.
 
 Original Code:
 
@@ -26,6 +26,8 @@ guard!(value <= threshold, Err(Error::OverThreshold));
 ```
 
 This expresses the guard clause in a more concise manner, improving readability.
+
+Note that the guard-clause is promising that the comparison is true after the guard, as is also the case for an assert. This is the reverse of the logic of an if statement. (I.E. it "guards" against the comparison being false.)
 
 ### Development goals
 
